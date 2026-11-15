@@ -43,3 +43,10 @@ quotas (per-day caps) are the only hard brake. Do not claim alerts are on until 
 - Google Cloud project: `encanto-guide-64429` ("Encanto Guide"), under the encantoexperiences.com organization. Maps JavaScript API and Places API (New) enabled. Billing temporarily linked to the shared account `01D1B3-537FC8-30F6DE`; change later with `gcloud billing projects link`. No API keys created yet; no quotas/budgets/alerts configured.
 - Hosting: GitHub Pages from `ilazpr/encanto-guide` (public), branch `gh-pages`: https://ilazpr.github.io/encanto-guide/ . Transfer the repo to an Encanto-owned GitHub org later (Settings, Transfer); the URL changes.
 - Redeploy: `npm run build`, then force-push `dist/` (with `.nojekyll`) to the `gh-pages` branch.
+
+## Google integration (2026-11-15)
+- Map: Google Maps JS (key `encanto-guide-browser-key` in project `encanto-guide-64429`, limited to Maps JS + Places API (New), referrers `ilazpr.github.io` and localhost:5173/4173). Key lives in git-ignored `.env`; it ships in the public bundle, so the restrictions are the protection. Falls back to OpenStreetMap if no key or load failure.
+- Photos + status: detail pages only, one Places Details call (`photos,businessStatus`), fetched live and held in memory only (never stored). Place IDs (33 of 35) are stored in `places.ts`; `zoo-mayaguez` and `kioskos-luquillo` had no confident match and have none (fallback tile).
+- Review items from the 2026-11-15 lookup: Google listed Museo de Arte de Ponce and Faro de los Morrillos as temporarily closed; list cards still use the "Photo pending" tile (photos on lists would cost one call per card).
+- Quota caps (per day): Maps loads 500, Place Details 250, Photo media 200, Text Search 100, Autocomplete 50. Worst-case monthly: roughly $35 maps + $40 details + $35 photos if every cap is hit every day.
+- Budgets (billing account, alerts at 20/50/90/100% of $50 = $10/$25/$45/$50): "Encanto Guide monthly" and "Hibird Bear Data Pipeline monthly 50 USD", emailing isaac@encantoexperiences.com and isaac@hibirdhospitalitygroup.com. Budget alerts are delayed and do not stop spend; the quotas above do. Email channel verification not confirmed.
