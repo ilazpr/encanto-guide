@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Place } from '../data/types'
 import { MAPS_KEY } from '../lib/googleMaps'
 import { Fallback } from './Fallback'
@@ -14,14 +14,14 @@ const STATUS_NOTE: Record<string, string> = {
   CLOSED_PERMANENTLY: 'Google lists this place as permanently closed.',
 }
 
-/** Detail pages only: one Places API (New) call for the top photo plus current business status. */
-export function PlacePhoto({ place }: { place: Place }) {
-  const id = place.googlePlaceId
+/** Fetches photo + status for one place, with a session-memory cache shared by cards and detail pages. */
+export function usePlaceDetails(id: string | undefined, enabled = true) {
   const [d, setD] = useState<Details | 'none' | null>(id ? cache.get(id) ?? null : 'none')
-  const [imgFailed, setImgFailed] = useState(false)
-
   useEffect(() => {
-    if (!id || !MAPS_KEY || cache.has(id)) { if (!id || !MAPS_KEY) setD('none'); return }
+    if (!enabled) return
+    if (!id || !MAPS_KEY) { setD('none'); return }
+    const hit = cache.get(id)
+    if (hit) { setD(hit); return }
     let dead = false
     fetch(`https://places.googleapis.com/v1/places/${encodeURIComponent(id)}`, {
       headers: { 'X-Goog-Api-Key': MAPS_KEY, 'X-Goog-FieldMask': 'photos,businessStatus' },
@@ -30,7 +30,41 @@ export function PlacePhoto({ place }: { place: Place }) {
       .then((j: Details) => { cache.set(id, j); if (!dead) setD(j) })
       .catch(() => { if (!dead) setD('none') })
     return () => { dead = true }
-  }, [id])
+  }, [id, enabled])
+  return d
+}
+
+export function photoSrc(photo: GPhoto, w: number) {
+  return `https://places.googleapis.com/v1/${photo.name}/media?maxWidthPx=${w}&key=${encodeURIComponent(MAPS_KEY)}`
+}
+
+/** List-card thumbnail: only fetched once the card scrolls into view. */
+export function CardThumb({ place }: { place: Place }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [seen, setSeen] = useState(false)
+  const [bad, setBad] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el || !place.googlePlaceId || !MAPS_KEY) return
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setSeen(true); io.disconnect() } }, { rootMargin: '100px' })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [place.googlePlaceId])
+  const d = usePlaceDetails(place.googlePlaceId, seen)
+  const photo = d && d !== 'none' ? d.photos?.[0] : undefined
+  return (
+    <div ref={ref} className="thumb">
+      {photo && !bad
+        ? <><img src={photoSrc(photo, 240)} alt="" loading="lazy" onError={() => setBad(true)} /><span className="thumb-credit">{photo.authorAttributions?.[0]?.displayName ?? 'Google Maps'}</span></>
+        : <Fallback name={place.name} category={place.category} />}
+    </div>
+  )
+}
+
+/** Detail pages only: one Places API (New) call for the top photo plus current business status. */
+export function PlacePhoto({ place }: { place: Place }) {
+  const d = usePlaceDetails(place.googlePlaceId)
+  const [imgFailed, setImgFailed] = useState(false)
 
   const photo = d && d !== 'none' ? d.photos?.[0] : undefined
   const status = d && d !== 'none' && d.businessStatus ? STATUS_NOTE[d.businessStatus] : undefined
@@ -40,7 +74,7 @@ export function PlacePhoto({ place }: { place: Place }) {
     <>
       {photo && !imgFailed ? (
         <figure className="gphoto">
-          <img src={`https://places.googleapis.com/v1/${photo.name}/media?maxWidthPx=900&key=${encodeURIComponent(MAPS_KEY)}`} alt={`${place.name} (photo from Google Maps)`} loading="lazy" onError={() => setImgFailed(true)} />
+          <img src={photoSrc(photo, 900)} alt={`${place.name} (photo from Google Maps)`} loading="lazy" onError={() => setImgFailed(true)} />
           <figcaption>Photo via Google Maps{author ? <> · {author.uri ? <a href={author.uri} target="_blank" rel="noopener">{author.displayName}</a> : author.displayName}</> : null}</figcaption>
         </figure>
       ) : <Fallback name={place.name} category={place.category} big />}
