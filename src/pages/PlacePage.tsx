@@ -3,7 +3,7 @@ import { PLACES } from '../data/places'
 import { TOURS, FAREHARBOR_TERMS } from '../data/tours'
 import { CATEGORIES, REGIONS } from '../data/types'
 import { directionsUrl } from '../lib/filter'
-import { Fallback } from '../components/Fallback'
+import { PlacePhoto } from '../components/PlacePhoto'
 import { SaveButton } from '../components/SaveButton'
 import { MapView } from '../components/MapView'
 import { TourCard } from '../components/TourCard'
@@ -25,7 +25,7 @@ export function PlacePage() {
       <button type="button" className="back" onClick={back}>← Back</button>
       <div className="place-head">
         <div className="place-media">
-          {place.photo ? <figure><img src={place.photo.src} alt={`${place.name}`} /><figcaption>{place.photo.credit} · {place.photo.license}</figcaption></figure> : <Fallback name={place.name} category={place.category} big />}
+          {place.photo ? <figure><img src={place.photo.src} alt={`${place.name}`} /><figcaption>{place.photo.credit} · {place.photo.license}</figcaption></figure> : <PlacePhoto place={place} />}
         </div>
         <div>
           <p className="eyebrow">{cat.label} · {place.municipality} · {region.label}</p>

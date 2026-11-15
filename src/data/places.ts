@@ -22,7 +22,8 @@ export const PLACES: Place[] = [
       "Editorial draft, pending Encanto review"
     ],
     "coordsVerified": "2026-11-15",
-    "officialUrl": "https://www.nps.gov/saju/"
+    "officialUrl": "https://www.nps.gov/saju/",
+    "googlePlaceId": "ChIJuWLC2b1uA4wRI18mdUpCAGo"
   },
   {
     "id": "san-cristobal",
@@ -43,7 +44,8 @@ export const PLACES: Place[] = [
       "Editorial draft, pending Encanto review"
     ],
     "coordsVerified": "2026-11-15",
-    "officialUrl": "https://www.nps.gov/saju/"
+    "officialUrl": "https://www.nps.gov/saju/",
+    "googlePlaceId": "ChIJDblZxcNuA4wRbSV3VbkJ5dM"
   },
   {
     "id": "paseo-princesa",
@@ -66,7 +68,8 @@ export const PLACES: Place[] = [
     "kidsBasis": "Flat, car-free promenade.",
     "also": [
       "kids"
-    ]
+    ],
+    "googlePlaceId": "ChIJs9vyO8tvA4wRMEGD123Fq8A"
   },
   {
     "id": "cementerio-pazzis",
@@ -86,7 +89,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJNQHkq79uA4wR9MMNmmlPxLY"
   },
   {
     "id": "casa-del-libro",
@@ -105,7 +109,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJV5dhfcduA4wRJp8jFL_2VAw"
   },
   {
     "id": "mapr",
@@ -125,7 +130,8 @@ export const PLACES: Place[] = [
       "Editorial draft, pending Encanto review"
     ],
     "coordsVerified": "2026-11-15",
-    "officialUrl": "https://www.mapr.org/"
+    "officialUrl": "https://www.mapr.org/",
+    "googlePlaceId": "ChIJGYZKTeNoA4wR6HGDU33r-LU"
   },
   {
     "id": "mapo",
@@ -145,7 +151,8 @@ export const PLACES: Place[] = [
       "Editorial draft, pending Encanto review"
     ],
     "coordsVerified": "2026-11-15",
-    "officialUrl": "https://museoarteponce.org/"
+    "officialUrl": "https://museoarteponce.org/",
+    "googlePlaceId": "ChIJA34xsIrVHIwRSQTMsl6Bixk"
   },
   {
     "id": "parque-de-bombas",
@@ -164,7 +171,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJVVVV_IjVHIwRem_IdVgt1_M"
   },
   {
     "id": "tibes",
@@ -183,7 +191,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJJdeaBInVHIwRV-WGQwa-SZE"
   },
   {
     "id": "buena-vista",
@@ -202,7 +211,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJI9BIxi_VAowR1hTSe5CfPzY"
   },
   {
     "id": "la-guancha",
@@ -225,7 +235,8 @@ export const PLACES: Place[] = [
     "kidsBasis": "Open boardwalk on the waterfront.",
     "also": [
       "kids"
-    ]
+    ],
+    "googlePlaceId": "ChIJsYxVtR3WHIwRJSHnUVTklT4"
   },
   {
     "id": "barrachina",
@@ -244,7 +255,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJt2zuY8duA4wR56__Tgqqm0M"
   },
   {
     "id": "mercado-santurce",
@@ -263,7 +275,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJbQsnHzZvA4wRGK6HrswJSk8"
   },
   {
     "id": "kioskos-luquillo",
@@ -304,7 +317,8 @@ export const PLACES: Place[] = [
       "Editorial draft, pending Encanto review"
     ],
     "coordsVerified": "2026-11-15",
-    "kidsBasis": "Open waterfront public park."
+    "kidsBasis": "Open waterfront public park.",
+    "googlePlaceId": "ChIJb5IkJd9uA4wRpqkxUcqqMCI"
   },
   {
     "id": "museo-nino",
@@ -324,7 +338,8 @@ export const PLACES: Place[] = [
       "Editorial draft, pending Encanto review"
     ],
     "coordsVerified": "2026-11-15",
-    "kidsBasis": "A children's museum by name and purpose."
+    "kidsBasis": "A children's museum by name and purpose.",
+    "googlePlaceId": "ChIJbThYTLtmA4wRnInX9IiSAlY"
   },
   {
     "id": "zoo-mayaguez",
@@ -367,7 +382,8 @@ export const PLACES: Place[] = [
     "kidsBasis": "Government-run public beach with facilities.",
     "also": [
       "kids"
-    ]
+    ],
+    "googlePlaceId": "ChIJpw1uJiJvA4wRR8msA7TzA7o"
   },
   {
     "id": "luquillo-monserrate",
@@ -390,7 +406,8 @@ export const PLACES: Place[] = [
     "kidsBasis": "Government-run public beach with facilities.",
     "also": [
       "kids"
-    ]
+    ],
+    "googlePlaceId": "ChIJx3yUIQuZBIwRCBfZHAO83bg"
   },
   {
     "id": "seven-seas",
@@ -413,7 +430,8 @@ export const PLACES: Place[] = [
     "kidsBasis": "Government-run public beach with facilities.",
     "also": [
       "kids"
-    ]
+    ],
+    "googlePlaceId": "ChIJnSPsZw-XBIwRPeixb874VFA"
   },
   {
     "id": "flamenco",
@@ -432,7 +450,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJKRcnrcXoBIwRFLJNVzuOzkA"
   },
   {
     "id": "sun-bay",
@@ -451,7 +470,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJhVSdhwrIBIwRtJh3qZC66Q4"
   },
   {
     "id": "crash-boat",
@@ -470,7 +490,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJBa_pxxi9AowR7rJ9I-N9kr0"
   },
   {
     "id": "buye",
@@ -489,7 +510,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJg44Jk-5RHYwRSIX13_QfNAQ"
   },
   {
     "id": "boqueron",
@@ -512,7 +534,8 @@ export const PLACES: Place[] = [
     "kidsBasis": "Government-run public beach with facilities.",
     "also": [
       "kids"
-    ]
+    ],
+    "googlePlaceId": "ChIJCeSSNTFOHYwRnNHIsaLci6Y"
   },
   {
     "id": "el-yunque",
@@ -533,7 +556,8 @@ export const PLACES: Place[] = [
       "Editorial draft, pending Encanto review"
     ],
     "coordsVerified": "2026-11-15",
-    "officialUrl": "https://www.fs.usda.gov/elyunque"
+    "officialUrl": "https://www.fs.usda.gov/elyunque",
+    "googlePlaceId": "ChIJydD9LrOhBIwR0SSym7z2QoM"
   },
   {
     "id": "laguna-grande",
@@ -553,7 +577,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJR0OLKCmXBIwRLB4qNMh-FEo"
   },
   {
     "id": "cabezas",
@@ -572,7 +597,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJLXRpXtWWBIwRJ8dx02IU13M"
   },
   {
     "id": "cueva-ventana",
@@ -592,7 +618,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJu5bvA5XeAowR3z1SOSI8W00"
   },
   {
     "id": "cueva-indio",
@@ -611,7 +638,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJrydpZL_hAowR0VWDYbcE9L0"
   },
   {
     "id": "charco-azul",
@@ -630,7 +658,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJYzIRi_BRA4wRInnlrIUSgEk"
   },
   {
     "id": "guanica",
@@ -649,7 +678,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJR1VaWFguHYwRTjIaIxfSQdI"
   },
   {
     "id": "los-morrillos",
@@ -668,7 +698,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJ6-pKFABbHYwRYzvh8JjJaks"
   },
   {
     "id": "laguna-condado",
@@ -685,7 +716,8 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJl-cnuTpvA4wRdUIeaiQ0iU4"
   },
   {
     "id": "pinones",
@@ -704,6 +736,7 @@ export const PLACES: Place[] = [
       "OpenStreetMap / Nominatim (coordinates, ODbL)",
       "Editorial draft, pending Encanto review"
     ],
-    "coordsVerified": "2026-11-15"
+    "coordsVerified": "2026-11-15",
+    "googlePlaceId": "ChIJWynnBhFkA4wR7p9k5qj5gRg"
   }
 ]

@@ -112,3 +112,6 @@ input[type=search]{flex:1;min-width:0;min-height:44px;padding:.5rem .8rem;font:i
  .tour .btn{width:100%}
 }
 .fb-note{white-space:nowrap;font-size:.6rem}
+.gphoto{margin:0}.gphoto img{display:block;width:100%;max-height:380px;object-fit:cover;border-radius:10px}
+.gphoto figcaption{font-size:.72rem;color:var(--muted);margin-top:.3rem}
+.status-note{background:#fff4d6;border:1px solid #e3c15a;border-radius:8px;padding:.5rem .7rem;font-size:.85rem;margin:.6rem 0 0}
