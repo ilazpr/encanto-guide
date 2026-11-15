@@ -38,3 +38,8 @@ quotas (per-day caps) are the only hard brake. Do not claim alerts are on until 
 - Weather and official advisories: add a `src/lib/advisories.ts` adapter feeding a banner on place pages. No conditions are shown now, and no "safe to visit" claims are made.
 - Tourism-organization image catalogs: fill `Place.photo` (src, credit, license, sourceUrl) per image only after rights are confirmed.
 - Hosting under `guide.encantoexperiences.com` or `/guide`: HashRouter works at any path; set `base` in `vite.config.ts` if needed.
+
+## Infrastructure (2026-11-15)
+- Google Cloud project: `encanto-guide-64429` ("Encanto Guide"), under the encantoexperiences.com organization. Maps JavaScript API and Places API (New) enabled. Billing temporarily linked to the shared account `01D1B3-537FC8-30F6DE`; change later with `gcloud billing projects link`. No API keys created yet; no quotas/budgets/alerts configured.
+- Hosting: GitHub Pages from `ilazpr/encanto-guide` (public), branch `gh-pages`: https://ilazpr.github.io/encanto-guide/ . Transfer the repo to an Encanto-owned GitHub org later (Settings, Transfer); the URL changes.
+- Redeploy: `npm run build`, then force-push `dist/` (with `.nojekyll`) to the `gh-pages` branch.
