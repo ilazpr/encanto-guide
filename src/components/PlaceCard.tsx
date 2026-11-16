@@ -11,7 +11,7 @@ export function PlaceCard({ place, active, onHover, km, refCb }: { place: Place;
     <li ref={refCb} className={`card${active ? ' active' : ''}`} onMouseEnter={() => onHover?.(place.id)} onMouseLeave={() => onHover?.(null)} onFocus={() => onHover?.(place.id)} onBlur={() => onHover?.(null)}>
       <Link to={`/place/${place.id}`} className="card-link">
         <div className="card-media">
-          {place.photo ? <img src={place.photo.src} alt="" loading="lazy" /> : <CardThumb place={place} />}
+          <CardThumb place={place} />
         </div>
         <div className="card-body">
           <p className="eyebrow">{cat.label} · {place.municipality}{km !== undefined ? ` · ${km < 10 ? km.toFixed(1) : Math.round(km)} km away` : ''}</p>

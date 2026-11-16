@@ -1,5 +1,6 @@
 import type { Tour } from '../data/types'
 import { REGIONS } from '../data/types'
+import { track } from '../lib/track'
 
 const hrs = (h: number) => (h < 1 ? `${Math.round(h * 60)} min` : `${h} h`)
 
@@ -20,7 +21,7 @@ export function TourCard({ tour }: { tour: Tour }) {
         </p>
         {tour.note ? <p className="small">{tour.note}</p> : null}
       </div>
-      <a className="btn" href={tour.bookingUrl} target="_blank" rel="noopener sponsored" aria-label={`Check availability for ${tour.title} (opens FareHarbor in a new tab)`}>
+      <a className="btn" href={tour.bookingUrl} target="_blank" rel="noopener sponsored" onClick={() => track('book_click', { tour_id: tour.id, operator: tour.operatorHandle })} aria-label={`Check availability for ${tour.title} (opens FareHarbor in a new tab)`}>
         Check availability <span aria-hidden="true">↗</span>
       </a>
     </li>

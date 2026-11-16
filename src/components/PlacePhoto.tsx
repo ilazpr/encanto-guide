@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { Place } from '../data/types'
 import { MAPS_KEY } from '../lib/googleMaps'
 import { Fallback } from './Fallback'
+import { asset } from '../lib/track'
 
 interface GPhoto { name: string; widthPx?: number; heightPx?: number; authorAttributions?: { displayName: string; uri?: string }[] }
 interface Details { photos?: GPhoto[]; businessStatus?: string }
@@ -38,20 +39,23 @@ export function photoSrc(photo: GPhoto, w: number) {
   return `https://places.googleapis.com/v1/${photo.name}/media?maxWidthPx=${w}&key=${encodeURIComponent(MAPS_KEY)}`
 }
 
-/** List-card thumbnail: only fetched once the card scrolls into view. */
+const CARD_GOOGLE = import.meta.env.VITE_CARD_GOOGLE_PHOTOS !== '0'
+
+/** List-card thumbnail: our own photo first; Google (optional, flag) only once the card scrolls into view. */
 export function CardThumb({ place }: { place: Place }) {
   const ref = useRef<HTMLDivElement>(null)
   const [seen, setSeen] = useState(false)
   const [bad, setBad] = useState(false)
   useEffect(() => {
     const el = ref.current
-    if (!el || !place.googlePlaceId || !MAPS_KEY) return
+    if (!el || place.photo || !CARD_GOOGLE || !place.googlePlaceId || !MAPS_KEY) return
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setSeen(true); io.disconnect() } }, { rootMargin: '100px' })
     io.observe(el)
     return () => io.disconnect()
   }, [place.googlePlaceId])
-  const d = usePlaceDetails(place.googlePlaceId, seen)
+  const d = usePlaceDetails(place.googlePlaceId, seen && !place.photo && CARD_GOOGLE)
   const photo = d && d !== 'none' ? d.photos?.[0] : undefined
+  if (place.photo) return <div className="thumb"><img src={asset(place.photo.thumb ?? place.photo.src)} alt="" loading="lazy" /><span className="thumb-credit">{place.photo.credit.split(' / ')[0]}</span></div>
   return (
     <div ref={ref} className="thumb">
       {photo && !bad

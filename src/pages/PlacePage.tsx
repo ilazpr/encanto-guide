@@ -1,10 +1,13 @@
+import { useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { asset, track } from '../lib/track'
 import { PLACES } from '../data/places'
 import { TOURS, FAREHARBOR_TERMS } from '../data/tours'
 import { CATEGORIES, REGIONS } from '../data/types'
 import { directionsUrl } from '../lib/filter'
 import { PlacePhoto } from '../components/PlacePhoto'
 import { SaveButton } from '../components/SaveButton'
+import { ShareButton } from '../components/ShareButton'
 import { MapView } from '../components/MapView'
 import { TourCard } from '../components/TourCard'
 
@@ -12,6 +15,7 @@ export function PlacePage() {
   const { id } = useParams()
   const nav = useNavigate()
   const place = PLACES.find((p) => p.id === id)
+  useEffect(() => { if (id) track('place_view', { place_id: id }) }, [id])
   if (!place) return (
     <section className="page narrow"><h1>Place not found</h1><p>That link may be old. <Link to="/explore">Browse all places</Link>.</p></section>
   )
@@ -25,7 +29,7 @@ export function PlacePage() {
       <button type="button" className="back" onClick={back}>← Back</button>
       <div className="place-head">
         <div className="place-media">
-          {place.photo ? <figure><img src={place.photo.src} alt={`${place.name}`} /><figcaption>{place.photo.credit} · {place.photo.license}</figcaption></figure> : <PlacePhoto place={place} />}
+          {place.photo ? <figure><img src={asset(place.photo.src)} alt={`${place.name}`} /><figcaption>Photo: {place.photo.credit}</figcaption></figure> : <PlacePhoto place={place} />}
         </div>
         <div>
           <p className="eyebrow">{cat.label} · {place.municipality} · {region.label}</p>
@@ -33,8 +37,9 @@ export function PlacePage() {
           <p className="lede">{place.summary}</p>
           <p><span className="tag free">Visit independently</span></p>
           <div className="actions">
-            <a className="btn" href={directionsUrl(place)} target="_blank" rel="noopener">Directions ↗</a>
+            <a className="btn" href={directionsUrl(place)} target="_blank" rel="noopener" onClick={() => track('directions_click', { place_id: place.id })}>Directions ↗</a>
             <SaveButton id={place.id} name={place.name} />
+            <ShareButton title={place.name} />
             {place.officialUrl ? <a className="btn ghost" href={place.officialUrl} target="_blank" rel="noopener">Official site ↗</a> : null}
           </div>
         </div>

@@ -2,11 +2,27 @@ import { Link } from 'react-router-dom'
 import { CATEGORIES, REGIONS } from '../data/types'
 import { PLACES } from '../data/places'
 import { TOURS } from '../data/tours'
+import { PlaceCard } from '../components/PlaceCard'
+import { asset } from '../lib/track'
+
+const START_HERE = ['el-morro', 'san-cristobal', 'el-yunque', 'flamenco', 'escambron', 'laguna-grande']
+
+function useCalmVideo() {
+  const reduce = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  const saver = (navigator as unknown as { connection?: { saveData?: boolean } }).connection?.saveData
+  return !reduce && !saver
+}
 
 export function Home() {
+  const playVideo = useCalmVideo()
+  const picks = START_HERE.map((id) => PLACES.find((p) => p.id === id)).filter((p) => !!p)
   return (
     <>
-      <section className="hero">
+      <section className="hero hero-media">
+        <div className="hero-bg" aria-hidden="true">
+          {playVideo ? <video src={asset('video/hero.mp4')} poster={asset('video/hero-poster.jpg')} autoPlay muted loop playsInline preload="metadata" /> : <img src={asset('video/hero-poster.jpg')} alt="" />}
+        </div>
+        <div className="hero-copy">
         <p className="eyebrow">Puerto Rico guide · test edition</p>
         <h1>Places you can visit on your own, and tours worth booking.</h1>
         <p className="lede">{PLACES.length} places across the island, kept separate from {TOURS.length} bookable experiences so you always know what is free to walk into and what needs a ticket.</p>
@@ -15,6 +31,12 @@ export function Home() {
           <Link className="btn ghost" to="/explore?cat=kids">With children</Link>
           <Link className="btn ghost" to="/book">What can I book?</Link>
         </div>
+        </div>
+      </section>
+      <section className="band">
+        <h2>Good places to start</h2>
+        <p className="muted">Editorial starting points for a first visit, not a ranking. Each is somewhere you can go without booking.</p>
+        <ul className="cards start-grid">{picks.map((p) => <PlaceCard key={p!.id} place={p!} />)}</ul>
       </section>
       <section className="band">
         <h2>Start with what you need</h2>

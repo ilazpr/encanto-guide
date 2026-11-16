@@ -23,7 +23,14 @@ export const PLACES: Place[] = [
     ],
     "coordsVerified": "2026-11-15",
     "officialUrl": "https://www.nps.gov/saju/",
-    "googlePlaceId": "ChIJuWLC2b1uA4wRI18mdUpCAGo"
+    "googlePlaceId": "ChIJuWLC2b1uA4wRI18mdUpCAGo",
+    "photo": {
+      "src": "photos/el-morro.jpg",
+      "thumb": "photos/el-morro-thumb.jpg",
+      "credit": "Jomar Malave / Discover Puerto Rico",
+      "license": "Used with permission from Discover Puerto Rico (confirmed by Encanto, 2026-11-15). Takedown on request.",
+      "sourceUrl": "https://discoverpuertorico.photoshelter.com/"
+    }
   },
   {
     "id": "san-cristobal",
@@ -471,7 +478,14 @@ export const PLACES: Place[] = [
       "Editorial draft, pending Encanto review"
     ],
     "coordsVerified": "2026-11-15",
-    "googlePlaceId": "ChIJhVSdhwrIBIwRtJh3qZC66Q4"
+    "googlePlaceId": "ChIJhVSdhwrIBIwRtJh3qZC66Q4",
+    "photo": {
+      "src": "photos/sun-bay.jpg",
+      "thumb": "photos/sun-bay-thumb.jpg",
+      "credit": "Jomar Malave / Discover Puerto Rico",
+      "license": "Used with permission from Discover Puerto Rico (confirmed by Encanto, 2026-11-15). Takedown on request.",
+      "sourceUrl": "https://discoverpuertorico.photoshelter.com/"
+    }
   },
   {
     "id": "crash-boat",

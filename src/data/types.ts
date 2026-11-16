@@ -37,7 +37,7 @@ export interface Place {
   officialUrl?: string
   /** Optional Google Place ID for the future official Places integration. */
   googlePlaceId?: string
-  photo?: { src: string; credit: string; license: string; sourceUrl: string }
+  photo?: { src: string; thumb?: string; credit: string; license: string; sourceUrl: string }
   sources: string[]
   coordsVerified: string
 }
