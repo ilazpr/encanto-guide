@@ -3,6 +3,7 @@ import type { Place } from '../data/types'
 import { CATEGORIES, REGIONS } from '../data/types'
 import { CardThumb } from './PlacePhoto'
 import { SaveButton } from './SaveButton'
+import { summaryFor } from '../variant'
 
 export function PlaceCard({ place, active, onHover, km, refCb }: { place: Place; active?: boolean; onHover?: (id: string | null) => void; km?: number; refCb?: (el: HTMLLIElement | null) => void }) {
   const cat = CATEGORIES.find((c) => c.id === place.category)!
@@ -16,7 +17,7 @@ export function PlaceCard({ place, active, onHover, km, refCb }: { place: Place;
         <div className="card-body">
           <p className="eyebrow">{cat.label} · {place.municipality}{km !== undefined ? ` · ${km < 10 ? km.toFixed(1) : Math.round(km)} km away` : ''}</p>
           <h3>{place.name}</h3>
-          <p className="summary">{place.summary}</p>
+          <p className="summary">{summaryFor(place)}</p>
           <p className="meta"><span className="tag free">Visit independently</span> <span className="muted">{region.label}</span></p>
         </div>
       </Link>

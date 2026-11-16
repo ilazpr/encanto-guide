@@ -28,3 +28,4 @@ dist-ssr
 .vercel
 .claude/settings.local.json
 photo-intake/
+dist-review/

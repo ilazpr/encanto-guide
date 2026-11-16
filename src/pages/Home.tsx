@@ -4,6 +4,7 @@ import { PLACES } from '../data/places'
 import { TOURS } from '../data/tours'
 import { PlaceCard } from '../components/PlaceCard'
 import { asset } from '../lib/track'
+import { BADGE, HOME_COPY, blurbFor } from '../variant'
 
 const START_HERE = ['el-morro', 'san-cristobal', 'el-yunque', 'flamenco', 'escambron', 'laguna-grande']
 
@@ -23,9 +24,9 @@ export function Home() {
           {playVideo ? <video src={asset('video/hero.mp4')} poster={asset('video/hero-poster.jpg')} autoPlay muted loop playsInline preload="metadata" /> : <img src={asset('video/hero-poster.jpg')} alt="" />}
         </div>
         <div className="hero-copy">
-        <p className="eyebrow">Puerto Rico guide · test edition</p>
-        <h1>Places you can visit on your own, and tours worth booking.</h1>
-        <p className="lede">{PLACES.length} places across the island, kept separate from {TOURS.length} bookable experiences so you always know what is free to walk into and what needs a ticket.</p>
+        <p className="eyebrow">{HOME_COPY.eyebrow}</p>
+        <h1>{HOME_COPY.h1}</h1>
+        <p className="lede">{HOME_COPY.lede(PLACES.length, TOURS.length)}</p>
         <div className="hero-actions">
           <Link className="btn" to="/explore">Open the map</Link>
           <Link className="btn ghost" to="/explore?cat=kids">With children</Link>
@@ -34,18 +35,19 @@ export function Home() {
         </div>
       </section>
       <section className="band">
-        <h2>Good places to start</h2>
-        <p className="muted">Editorial starting points for a first visit, not a ranking. Each is somewhere you can go without booking.</p>
+        <h2>{HOME_COPY.start}</h2>
+        <p className="muted">{HOME_COPY.startNote}</p>
         <ul className="cards start-grid">{picks.map((p) => <PlaceCard key={p!.id} place={p!} />)}</ul>
       </section>
       <section className="band">
-        <h2>Start with what you need</h2>
+        <h2>{HOME_COPY.needs}</h2>
         <ul className="grid cats">
           {CATEGORIES.map((c) => (
             <li key={c.id}>
               <Link to={`/explore?cat=${c.id}`} className={`tile tile-${c.id}`}>
+                {BADGE[c.id] ? <img className="tile-badge" src={asset(BADGE[c.id]!)} alt="" /> : null}
                 <strong>{c.label}</strong>
-                <span>{c.blurb}</span>
+                <span>{blurbFor(c.id, c.blurb)}</span>
                 <em>{PLACES.filter((p) => p.category === c.id || p.also?.includes(c.id)).length} places</em>
               </Link>
             </li>
@@ -53,7 +55,7 @@ export function Home() {
         </ul>
       </section>
       <section className="band alt">
-        <h2>Or start from where you are staying</h2>
+        <h2>{HOME_COPY.where}</h2>
         <ul className="grid regions">
           {REGIONS.map((r) => (
             <li key={r.id}>

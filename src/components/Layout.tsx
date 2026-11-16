@@ -1,3 +1,4 @@
+import { VARIANT, VARIANT_LABEL } from '../variant'
 import { NavLink, Outlet, Link } from 'react-router-dom'
 import { useSaved } from '../lib/saved'
 
@@ -9,7 +10,7 @@ export function Layout() {
     <>
       <a className="skip" href="#main">Skip to content</a>
       <div className="review-bar" role="note">
-        Test collection · pending Encanto editorial review · not a public launch
+        <strong>Version {VARIANT_LABEL[VARIANT]}</strong> · Test collection, pending Encanto review, not a public launch · <a href={`mailto:isaac@encantoexperiences.com?subject=${encodeURIComponent('Guide feedback, version ' + VARIANT.toUpperCase())}&body=${encodeURIComponent('Page: ' + window.location.href + '\n\nMy feedback:\n')}`}>Send feedback</a>
       </div>
       <header className="site-header">
         <Link to="/" className="brand" aria-label="Encanto Puerto Rico guide, home">

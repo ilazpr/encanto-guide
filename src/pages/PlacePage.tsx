@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { asset, track } from '../lib/track'
+import { summaryFor } from '../variant'
 import { PLACES } from '../data/places'
 import { TOURS, FAREHARBOR_TERMS } from '../data/tours'
 import { CATEGORIES, REGIONS } from '../data/types'
@@ -34,7 +35,7 @@ export function PlacePage() {
         <div>
           <p className="eyebrow">{cat.label} · {place.municipality} · {region.label}</p>
           <h1>{place.name}</h1>
-          <p className="lede">{place.summary}</p>
+          <p className="lede">{summaryFor(place)}</p>
           <p><span className="tag free">Visit independently</span></p>
           <div className="actions">
             <a className="btn" href={directionsUrl(place)} target="_blank" rel="noopener" onClick={() => track('directions_click', { place_id: place.id })}>Directions ↗</a>
