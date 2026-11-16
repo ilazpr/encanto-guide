@@ -13,7 +13,7 @@ export function Layout() {
       </div>
       <header className="site-header">
         <Link to="/" className="brand" aria-label="Encanto Puerto Rico guide, home">
-          <span className="brand-name">Encanto</span>
+          <img className="brand-logo" src={`${import.meta.env.BASE_URL}brand/logo-bosque.svg`} alt="Encanto Experiences" />
           <span className="brand-sub">Puerto Rico guide</span>
         </Link>
         <nav aria-label="Primary">
@@ -30,7 +30,7 @@ export function Layout() {
           Encanto Experiences may earn a commission when you book a tour through links in this guide, at no extra cost to you.{' '}
           <Link to="/about#disclosure">Affiliate disclosure</Link> · <Link to="/about">How places are chosen</Link> · <a href={MAIN_SITE}>Back to encantoexperiences.com</a>
         </p>
-        <p className="fine">Map data © OpenStreetMap contributors. Place coordinates from OpenStreetMap (ODbL).</p>
+        <p className="fine">Photos are credited where shown. Photo, listing or fact wrong? <a href="mailto:isaac@encantoexperiences.com?subject=Encanto%20guide%3A%20photo%20or%20listing%20request">Tell us</a> and we will fix or remove it. Maps and photos from Google where shown; place coordinates from OpenStreetMap (ODbL) contributors.</p>
       </footer>
     </>
   )
