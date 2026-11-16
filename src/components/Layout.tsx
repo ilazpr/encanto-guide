@@ -26,6 +26,7 @@ export function Layout() {
       </header>
       <main id="main"><Outlet /></main>
       <footer className="site-footer">
+        <p className="tagline">Guided by those who call it home.</p>
         <p>
           Encanto Experiences may earn a commission when you book a tour through links in this guide, at no extra cost to you.{' '}
           <Link to="/about#disclosure">Affiliate disclosure</Link> · <Link to="/about">How places are chosen</Link> · <a href={MAIN_SITE}>Back to encantoexperiences.com</a>
